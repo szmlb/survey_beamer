@@ -1,0 +1,76 @@
+\documentclass[8pt, dvipdfmx]{beamer}
+
+\title{Survey template with beamer}
+\author{@szmlb}
+\date{\today}
+
+\usetheme{Warsaw}
+\usecolortheme{rose}
+%\usetheme{Copenhagen} % テーマは指定しなくともよい．
+
+\begin{document}
+
+\maketitle
+
+\section{目次}
+\begin{frame}{目次}
+ \tableofcontents
+\end{frame}
+
+\section{README}
+\begin{frame}{README}
+  \begin{itemize}
+   \item 落合先生のサーベイまとめ方法を踏襲し, レイアウトにこだわることなく内容の記述に集中できるようbeamerでの環境を整備した.
+   \item そもそもレイアウトはあまり重要ではないので,  ブログ等で項目別に箇条書きするだけでもいい気がする.
+   \item とりあえずbeamerの自分用メモ代わりとして公開.
+  \end{itemize}
+\end{frame}
+
+\section{論文レビュー}
+\subsection{Sampling-based approach}
+\begin{frame}{RRT-connect \cite{RRT-connect}}
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+          \begin{block}{どんなもの？}
+            Rapidly-exploring Rondamized Trees: RRTを始点と終点から同時に実行して, 二つの探索木を簡単なgreedy heuristicによって接続する.
+          \end{block}
+          \begin{block}{先行研究と比べてどこがすごい？}
+          　前処理が要らず, incrementalな実行で, 難しい問題に対して解が得られている.
+          \end{block}
+          \begin{block}{技術や手法のキモはどこ？}
+            greedyな探索と確率的な探索によるバランスの取れた探索. probabilistically completeであることが証明されている.
+          \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+          \begin{block}{どうやって有効だと検証した？}
+            二次元の経路計画問題やpiano mover's problem, 6自由度マニピュレータの経路計画, ヒトの腕(7自由度)の経路計画にRRT-connectを利用して, 問題が解けることを示した.
+          \end{block}
+          \begin{block}{議論はある？}
+            RRTのノード更新ステップ幅の最適化. CONNECTアルゴリズムの改善. 最近傍点探索手法の検討. incrementalな衝突検知.
+          \end{block}
+          \begin{block}{次に読むべき論文は？}
+            Probabilistic Road Map: PRM[15]やRRTの原著論文[18].
+          \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{手法・実験環境の詳細}
+論文の特徴的な式やアルゴリズム, 図等のまとめるがあると後で見返す時に良いかも.
+\end{frame}
+
+\section{参考文献}
+\begin{frame}{References}
+
+\begin{thebibliography}{99}
+%\setlength{\itemsep}{-.5zw}
+\beamertemplatetextbibitems
+
+\bibitem{RRT-connect}
+J. J. Kuffner and S. M. LaValle, ``RRT-connect: An Efficient Approach to Single-query Path Planning," in Proc. IEEE Int. Conf. on Robotics and Automation, pp. 995-1001, 2000
+
+\end{thebibliography}
+
+\end{frame}
+
+\end{document}
